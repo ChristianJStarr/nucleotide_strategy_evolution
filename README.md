@@ -34,17 +34,17 @@ Key differentiators include:
 ## Core Concepts
 
 ```mermaid
-graph LR
-    A[DNA Sequence <br> (ACGT...)] -->|Decode <br> `encoding.py`| B(Chromosome <br> List of Genes);
-    B --> C{Strategy Logic};
-    C -->|Apply to Data <br> `backtesting`| D(Backtest Engine);
-    D --> E(Performance Metrics <br> Profit, Drawdown, etc.);
-    E -->|Fitness Assignment <br> `fitness/evaluation.py`| F(Fitness Score / Objectives);
-    F -->|Selection <br> `population/selection.py`| G(Select Parents);
-    G -->|Crossover & Mutation <br> `operators/`| H(New DNA Sequence);
-    H --> A;
-    I(Population <br> `population/population.py`) --> G;
-    H --> I;
+flowchart LR
+    A["DNA Sequence\n(ACGT...)"] -->|"Decode\nencoding.py"| B["Chromosome\nList of Genes"]
+    B --> C["Strategy Logic"]
+    C -->|"Apply to Data\nbacktesting"| D["Backtest Engine"]
+    D --> E["Performance Metrics\nProfit, Drawdown, etc."]
+    E -->|"Fitness Assignment\nfitness/evaluation.py"| F["Fitness Score / Objectives"]
+    F -->|"Selection\npopulation/selection.py"| G["Select Parents"]
+    G -->|"Crossover & Mutation\noperators/"| H["New DNA Sequence"]
+    H --> A
+    I["Population\npopulation/population.py"] --> G
+    H --> I
 ```
 *   **DNA Encoding (`encoding.py`, `core/structures.py`):**
     *   Strategies are represented as `DNASequence` (strings of A, C, G, T).

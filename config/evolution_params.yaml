@@ -1,0 +1,68 @@
+# Placeholder for evolution parameters
+evolution:
+  generations: 50
+  # ... add other parameters
+
+population:
+  size: 100
+  # ... add other parameters
+
+operators:
+  crossover: # Details for crossover operator
+    type: single_point
+    rate: 0.7
+  # --- Mutation configuration: List of operators to apply ---
+  mutation:
+    - type: point_mutation
+      rate: 0.05 # Probability per nucleotide
+    - type: insertion
+      rate: 0.01 # Probability per position
+    - type: deletion
+      rate: 0.01 # Probability per nucleotide
+    - type: gene_duplication
+      rate: 0.02 # Probability per gene
+    - type: inversion
+      rate: 0.01 # Probability per sequence
+    - type: codon_substitution
+      rate: 0.03 # Probability per codon
+    - type: translocation
+      rate: 0.01 # Probability per sequence
+
+selection:
+  method: nsga2 # Defaulting to NSGA-II for MOO
+  selection_objective: "fitness" # Options: "fitness", "novelty"
+  k: 3 # Tournament size (used if method=tournament or selection_objective=novelty)
+  # ... add other selection parameters
+
+# --- Island Model Configuration (Phase 3+) ---
+island_model:
+  enabled: false # Set to true to use IslandModel
+  num_islands: 4
+  migration_frequency: 10 # Migrate every N generations
+  num_migrants: 2        # Number of individuals to migrate
+  migration_selection_method: "best" # How to choose migrants ('best', 'random')
+
+# --- Diversity Settings (Phase 3+) ---
+diversity:
+  fitness_sharing:
+    enabled: true # Set to false to disable
+    sigma_share: 10.0 # Sharing radius (Hamming distance)
+    alpha: 1.0      # Sharing function shape
+
+# --- Adaptive Operator Rates (Phase 3+) ---
+adaptive_rates:
+  enabled: false # Set to true to enable
+  target_hamming_distance: 15.0 # Example target diversity
+  adjustment_factor: 0.01 # How much to adjust rates per generation
+  # Define bounds for rates
+  min_mutation_rate: 0.005 # Applies to operators like point_mutation, insertion, deletion etc.
+  max_mutation_rate: 0.2
+  min_crossover_rate: 0.4
+  max_crossover_rate: 0.9
+
+fitness:
+  objectives:
+    - net_profit # Maximize
+    - -max_drawdown # Minimize (by maximizing negative)
+    - sortino_ratio # Maximize
+  # ... add complexity penalty details, etc. 

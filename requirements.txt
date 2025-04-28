@@ -1,0 +1,12 @@
+# Core dependencies
+numpy
+pandas
+pyyaml
+# pydantic # For configuration validation (optional but recommended)
+matplotlib # For basic plotting
+plotly # For interactive plotting
+
+# Placeholder for the chosen backtesting library (e.g., backtesting.py, vectorbt)
+# backtesting.py
+# vectorbt 
+backtesting # Add backtesting.py library 

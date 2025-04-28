@@ -1,0 +1,19 @@
+# Placeholder for compliance rules (e.g., based on TopStep rules)
+
+daily_loss_limit: 2000 # Example value
+max_trailing_drawdown: 3000 # Example value
+# Add other rules like scaling plan, consistency, allowed times, etc.
+
+scaling_plan:
+  enabled: true
+  levels:
+    - threshold: 0
+      contracts: 2
+    - threshold: 1500
+      contracts: 3
+    # ... more levels
+
+allowed_trading_hours:
+  start: "08:30"
+  end: "15:00"
+  timezone: "America/Chicago" 

@@ -1,0 +1,83 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nucleotide_strategy_evolution"
+version = "0.1.0" # Initial version
+description = "DNA-based genetic algorithms for evolving trading strategies."
+readme = "README.md" # Assuming a README exists or will be created
+requires-python = ">=3.9"
+license = {text = "MIT"} # Or choose another license
+authors = [
+  {name = "Your Name / Organization", email = "your@email.com"}, # TODO: Replace with actual author info
+]
+keywords = ["genetic algorithm", "trading", "evolutionary algorithm", "finance", "algorithmic trading", "dna"]
+classifiers = [
+    "Development Status :: 3 - Alpha", # Initial development stage
+    "Intended Audience :: Financial and Insurance Industry",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Operating System :: OS Independent",
+    "Topic :: Office/Business :: Financial :: Investment",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+dependencies = [
+    "numpy",
+    "pandas",
+    "pyyaml",
+    # "pydantic", # Uncomment if used
+    "matplotlib",
+    "plotly",
+    "backtesting", # From requirements.txt
+    "scikit-learn", # Added for PCA/StandardScaler in analysis
+    "seaborn", # Added for heatmaps/plotting
+]
+
+[project.urls]
+Homepage = "https://github.com/yourusername/nucleotide_strategy_evolution" # TODO: Replace with actual URL
+Repository = "https://github.com/yourusername/nucleotide_strategy_evolution" # TODO: Replace with actual URL
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "flake8",
+    "black",
+    "mypy",
+    # "hypothesis", # Uncomment if used
+    "jupyterlab",
+]
+
+[tool.setuptools.packages.find]
+where = ["."] # Look for packages in the current directory
+include = ["nucleotide_strategy_evolution*"] # Include the main package
+exclude = ["tests*", "examples*", "notebooks*", "config*", "data*"] # Exclude non-package directories
+
+# --- Tool Configurations (Optional but Recommended) ---
+
+[tool.black]
+line-length = 88
+target-version = ['py39', 'py310', 'py311']
+
+[tool.flake8]
+max-line-length = 88
+extend-ignore = "E203" # Ignore whitespace before ':' (compatible with black)
+
+[tool.mypy]
+python_version = "3.9"
+warn_return_any = true
+warn_unused_configs = true
+ignore_missing_imports = true # Start with this, can tighten later
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q"
+testpaths = [
+    "tests",
+] 
